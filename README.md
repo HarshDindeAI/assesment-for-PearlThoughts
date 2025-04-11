@@ -4,9 +4,8 @@ Task: Implement an AI service that generates LinkedIn posts reflecting the clien
 ## Code Explanation Video
 Watch this video for a detailed explanation of the code and how it works:
 
-[![Code Explanation Video]](./assesment1.mp4)
+[![Code Explanation Video]](https://youtu.be/JK08FdWKbTU)
 
-Replace `VIDEO_ID` with the actual YouTube video ID of your code explanation video.
 
 ## Setup Instructions
 

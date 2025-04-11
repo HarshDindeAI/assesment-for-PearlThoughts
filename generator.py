@@ -5,6 +5,26 @@ import os
 import numpy as np
 from dotenv import load_dotenv
 load_dotenv()
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_url(url):
+    try:
+        # Send a GET request to the URL
+        response = requests.get(url)
+        response.raise_for_status()
+
+        # Parse the HTML content
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        # Extract all paragraph text
+        paragraphs = [p.get_text().strip() for p in soup.find_all('p') if p.get_text().strip()]
+
+        return paragraphs
+
+    except requests.exceptions.RequestException as e:
+        return {"error": str(e)}
+
 # Init embedding model
 embedding_model = AzureOpenAIEmbeddings(
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),
@@ -43,7 +63,7 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 
-def generate_physician_linkedin_post(article_summary: str, perspectives: list[str]):
+def generate_physician_linkedin_post(article_summary: str,url :str, perspectives: list[str]):
 
     """
     Generate a physician's LinkedIn post based on an article summary and perspectives.
@@ -64,6 +84,9 @@ def generate_physician_linkedin_post(article_summary: str, perspectives: list[st
     """
 
     perspective_text = "\n".join([f"- {p}" for p in perspectives])
+    if url is not None:
+        article_summary += scrape_url(url)
+
     messages = prompt.format_messages(
         article_summary=article_summary,
         perspectives=perspective_text

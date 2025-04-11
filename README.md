@@ -1,6 +1,13 @@
 # assesment-for-PearlThoughts
 Task: Implement an AI service that generates LinkedIn posts reflecting the client physician's perspective on healthcare AI topics
 
+## Code Explanation Video
+Watch this video for a detailed explanation of the code and how it works:
+
+[![Code Explanation Video]](./assesment1.mp4)
+
+Replace `VIDEO_ID` with the actual YouTube video ID of your code explanation video.
+
 ## Setup Instructions
 
 ### 1. Environment Setup

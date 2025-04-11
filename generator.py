@@ -63,7 +63,7 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 
-def generate_physician_linkedin_post(article_summary: str,url :str, perspectives: list[str]):
+def generate_physician_linkedin_post(article_summary: str, perspectives: list[str], url :str = None,) -> dict:
 
     """
     Generate a physician's LinkedIn post based on an article summary and perspectives.
